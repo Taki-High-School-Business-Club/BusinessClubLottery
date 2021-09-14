@@ -15,16 +15,21 @@ namespace BusinessClubLottery2.Settings {
         Path path = new Path();
 
         public Settings() {
-            InitializeComponent();           
+            InitializeComponent();
         }
 
         private void clearbtn_Click(object sender, EventArgs e) {
 
             DialogResult result = MessageBox.Show("名簿を初期化していいの？", "いいんすか？", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
-            
+
             if (result == DialogResult.OK) {
+                
                 string _tmp = FileManagement.Readtxt(path.NAMELIST).Replace("start{", "").Replace("}end", "");
-                FileManagement.Addtxt(path.BACKUP, "\n\n///////////\n\n" + _tmp);
+                
+                DateTime dt = DateTime.Now;
+                string date = dt.ToString();
+                FileManagement.Addtxt(path.BACKUP, $"\n\n/////{date}/////\n\n" + _tmp);
+
                 FileManagement.Overwritetxt(path.NAMELIST, namelist.Text);
                 FileManagement.CreateFile(path.NAMELIST);
                 MessageBox.Show("名簿を初期化しました！", "おいしかった～");
@@ -43,10 +48,12 @@ namespace BusinessClubLottery2.Settings {
             if (result == DialogResult.OK) {
                 string _tmp = FileManagement.Readtxt(path.NAMELIST).Replace("start{", "").Replace("}end", "");
 
-                FileManagement.Addtxt(path.BACKUP, "\n\n///////////\n\n" + _tmp);
+                DateTime dt = DateTime.Now;
+                string date = dt.ToString();
+                FileManagement.Addtxt(path.BACKUP, $"\n\n/////{date}/////\n\n" + _tmp);
 
                 //if (ListEvent.ToList(namelist.Text)[ListEvent.ToList(namelist.Text).Length - 1] != "") {
-                    //namelist.Text += "\n\n";
+                //namelist.Text += "\n\n";
                 //}
 
                 FileManagement.Overwritetxt(path.NAMELIST, namelist.Text);
@@ -55,7 +62,7 @@ namespace BusinessClubLottery2.Settings {
         }
 
         private void namelisthint_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e) {
-            MessageBox.Show("入力例:\n\nstart{\n<一人目>\n<二人目>\n<三人目>\n}end\n\n上記のように、要素間は改行し、start{ }endで囲うようにしてください。","書式", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            MessageBox.Show("入力例:\n\nstart{\n<一人目>\n<二人目>\n<三人目>\n}end\n\n上記のように、要素間は改行し、start{ }endで囲うようにしてください。", "書式", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
         private void openfolder_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e) {
@@ -136,6 +143,26 @@ namespace BusinessClubLottery2.Settings {
             //MessageBox.Show(Properties.ifCountdown().ToString() + "\n" + ifcountdown.Checked.ToString());
             ifUseCache.Checked = Properties.ifUseCache();
             ifRandomizer.Checked = Properties.ifRandomizer();
+            checkBox2.Checked = Properties.ifRandomValue();
+        }
+
+        private void checkBox2_CheckedChanged(object sender, EventArgs e) { //ifRandomValue
+
+            string[] _full = ListEvent.ToList2(FileManagement.Readtxt(path.PROPERTIES));
+            _full[7] = ifUseCache.Checked.ToString() + ",";
+
+            if (checkBox2.Checked) {
+
+                _full[3] = "False,";
+                ifUseCache.Checked = false;
+                ifUseCache.Enabled = false;
+            } else {
+
+                ifUseCache.Enabled = true;
+            }
+
+            string writevalue = ListEvent.ListToStr(_full);
+            FileManagement.Overwritetxt(path.PROPERTIES, writevalue);
         }
     }
 }

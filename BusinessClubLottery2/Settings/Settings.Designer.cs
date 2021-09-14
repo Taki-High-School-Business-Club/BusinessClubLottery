@@ -224,13 +224,14 @@ namespace BusinessClubLottery2.Settings {
             this.checkBox2.Name = "checkBox2";
             this.checkBox2.Size = new System.Drawing.Size(145, 19);
             this.checkBox2.TabIndex = 5;
-            this.checkBox2.Text = "人数ランダム（未実装）";
+            this.checkBox2.Text = "人数ランダム（試験的）";
             this.checkBox2.UseVisualStyleBackColor = true;
+            this.checkBox2.CheckedChanged += new System.EventHandler(this.checkBox2_CheckedChanged);
             // 
             // openfolder
             // 
             this.openfolder.AutoSize = true;
-            this.openfolder.Location = new System.Drawing.Point(564, 357);
+            this.openfolder.Location = new System.Drawing.Point(554, 357);
             this.openfolder.Name = "openfolder";
             this.openfolder.Size = new System.Drawing.Size(118, 15);
             this.openfolder.TabIndex = 6;
@@ -242,7 +243,7 @@ namespace BusinessClubLottery2.Settings {
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(694, 381);
+            this.ClientSize = new System.Drawing.Size(684, 381);
             this.Controls.Add(this.openfolder);
             this.Controls.Add(this.checkBox2);
             this.Controls.Add(this.ifRandomizer);
@@ -250,8 +251,11 @@ namespace BusinessClubLottery2.Settings {
             this.Controls.Add(this.ifcountdown);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
+            this.MaximizeBox = false;
+            this.MaximumSize = new System.Drawing.Size(700, 420);
+            this.MinimumSize = new System.Drawing.Size(700, 420);
             this.Name = "Settings";
-            this.Text = "Settings";
+            this.Text = "設定";
             this.Load += new System.EventHandler(this.Settings_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();

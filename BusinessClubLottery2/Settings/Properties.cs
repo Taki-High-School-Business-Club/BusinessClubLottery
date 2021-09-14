@@ -42,6 +42,12 @@ namespace BusinessClubLottery2.Settings {
             return TorF(value);
         }
 
+        public static bool ifRandomValue() {
+
+            string value = properties()[7];
+            return TorF(value);
+        }
+
         public static bool TurnValue (bool value) {
 
             if (value) return false;
