@@ -61,6 +61,26 @@ namespace BusinessClubLottery2 {
         }
         
         /// <summary>
+        ///   型 System.Drawing.Bitmap のローカライズされたリソースを検索します。
+        /// </summary>
+        internal static System.Drawing.Bitmap icon_archive_3 {
+            get {
+                object obj = ResourceManager.GetObject("icon_archive_3", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   型 System.Drawing.Bitmap のローカライズされたリソースを検索します。
+        /// </summary>
+        internal static System.Drawing.Bitmap icon_background {
+            get {
+                object obj = ResourceManager.GetObject("icon_background", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
         ///   start{
         ///Aさん
         ///Bさん
@@ -86,8 +106,8 @@ namespace BusinessClubLottery2 {
         ///True,
         ////*-[5]乱数生成器-*/
         ///False,
-        ////*-[7]-*/
-        ///
+        ////*-[7]人数ランダム-*/
+        ///False,
         ////*-[9]-*/
         ///
         ////*-[11]-*/

@@ -8,7 +8,7 @@ namespace BusinessClubLottery2.Events {
 
         static Path path = new Path();
 
-        public static bool IsOverlap (string[] list, string[] cache) {
+        public static bool IsOverlap(string[] list, string[] cache) {
 
             for (int i = 0; i <= list.Length - 1; i++) {
                 if (Array.IndexOf<string>(cache, list[i].Replace("\r\n", "\n").Split(new[] { '\n', '\r' })[0]) >= 0) {
@@ -18,17 +18,20 @@ namespace BusinessClubLottery2.Events {
             return false;
         }
 
-        public static void WriteHistory (string[] result) {
+        public static void WriteHistory(string[] result) {
 
-            FileManagement.Addtxt(path.HISTORY, ListEvent.ListToStr(result));            
+            DateTime dt = DateTime.Now;
+            string date = dt.ToString();
+            FileManagement.Addtxt(path.HISTORY, $"\n\n{date}\n\n");
+            FileManagement.Addtxt(path.HISTORY, ListEvent.ListToStr(result));
         }
 
-        public static void WriteCache (string[] result) {
+        public static void WriteCache(string[] result) {
 
             FileManagement.Addtxt(path.CACHE, ListEvent.ListToStr(result));
         }
 
-        public static void EditCache (int value) {
+        public static void EditCache(int value) {
 
             string[] history = FileManagement.Readtxt(path.CACHE).Replace("\r\n", "\n").Split(new[] { '\n', '\r' });
             string[] namelist = FileManagement.Readtxt(path.NAMELIST).Replace("\r\n", "\n").Split(new[] { '\n', '\r' });

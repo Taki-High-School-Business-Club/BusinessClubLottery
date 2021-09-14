@@ -34,6 +34,7 @@ namespace BusinessClubLottery2
             this.resultbox = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.settingbtn = new System.Windows.Forms.LinkLabel();
+            this.showabout = new System.Windows.Forms.LinkLabel();
             this.SuspendLayout();
             // 
             // lotbtn
@@ -59,6 +60,7 @@ namespace BusinessClubLottery2
             this.resultbox.Location = new System.Drawing.Point(13, 116);
             this.resultbox.Multiline = true;
             this.resultbox.Name = "resultbox";
+            this.resultbox.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.resultbox.Size = new System.Drawing.Size(259, 133);
             this.resultbox.TabIndex = 2;
             // 
@@ -82,18 +84,33 @@ namespace BusinessClubLottery2
             this.settingbtn.Text = "設定";
             this.settingbtn.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.settingbtn_LinkClicked);
             // 
+            // showabout
+            // 
+            this.showabout.AutoSize = true;
+            this.showabout.Location = new System.Drawing.Point(184, 252);
+            this.showabout.Name = "showabout";
+            this.showabout.Size = new System.Drawing.Size(88, 15);
+            this.showabout.TabIndex = 5;
+            this.showabout.TabStop = true;
+            this.showabout.Text = "このアプリについて";
+            this.showabout.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.showabout_LinkClicked);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(284, 276);
+            this.Controls.Add(this.showabout);
             this.Controls.Add(this.settingbtn);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.resultbox);
             this.Controls.Add(this.valuebox);
             this.Controls.Add(this.lotbtn);
+            this.MaximizeBox = false;
+            this.MaximumSize = new System.Drawing.Size(300, 315);
+            this.MinimumSize = new System.Drawing.Size(300, 315);
             this.Name = "Form1";
-            this.Text = "Form1";
+            this.Text = "抽選アプリ";
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -106,6 +123,7 @@ namespace BusinessClubLottery2
         private System.Windows.Forms.TextBox resultbox;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.LinkLabel settingbtn;
+        private System.Windows.Forms.LinkLabel showabout;
     }
 }
 
