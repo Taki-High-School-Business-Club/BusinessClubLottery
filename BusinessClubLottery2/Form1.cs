@@ -165,7 +165,7 @@ namespace BusinessClubLottery2 {
 
                     rawresultlist = rawresult.Split('\n');
 
-                    if (setValue) {
+                    if (!setValue) {
 
                         for (int i = 0; i <= value - 1; i++) {
                             result[i] = rawresultlist[i];
