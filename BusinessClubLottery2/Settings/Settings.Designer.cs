@@ -42,6 +42,7 @@ namespace BusinessClubLottery2.Settings {
             this.ifRandomizer = new System.Windows.Forms.CheckBox();
             this.checkBox2 = new System.Windows.Forms.CheckBox();
             this.openfolder = new System.Windows.Forms.LinkLabel();
+            this.absentbtn = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.SuspendLayout();
@@ -239,11 +240,22 @@ namespace BusinessClubLottery2.Settings {
             this.openfolder.Text = "設定格納フォルダを開く";
             this.openfolder.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.openfolder_LinkClicked);
             // 
+            // absentbtn
+            // 
+            this.absentbtn.Location = new System.Drawing.Point(554, 308);
+            this.absentbtn.Name = "absentbtn";
+            this.absentbtn.Size = new System.Drawing.Size(118, 35);
+            this.absentbtn.TabIndex = 7;
+            this.absentbtn.Text = "欠席者設定";
+            this.absentbtn.UseVisualStyleBackColor = true;
+            this.absentbtn.Click += new System.EventHandler(this.absentbtn_Click);
+            // 
             // Settings
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(684, 381);
+            this.Controls.Add(this.absentbtn);
             this.Controls.Add(this.openfolder);
             this.Controls.Add(this.checkBox2);
             this.Controls.Add(this.ifRandomizer);
@@ -286,5 +298,6 @@ namespace BusinessClubLottery2.Settings {
         public System.Windows.Forms.CheckBox ifUseCache;
         public System.Windows.Forms.CheckBox ifRandomizer;
         public System.Windows.Forms.CheckBox checkBox2;
+        private System.Windows.Forms.Button absentbtn;
     }
 }

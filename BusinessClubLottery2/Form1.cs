@@ -18,7 +18,6 @@ namespace BusinessClubLottery2 {
         private static Path path = new Path();
 
         public Form1() {
-
             InitializeComponent();
 
             if (!(File.Exists(path.FILE))) {
@@ -36,12 +35,15 @@ namespace BusinessClubLottery2 {
             if (!(File.Exists(path.NAMELIST))) {
                 FileManagement.CreateFile(path.NAMELIST);
                 FileManagement.Overwritetxt(path.NAMELIST, Resources.namelist_default);
-
             }
 
             if (!(File.Exists(path.PROPERTIES))) {
                 FileManagement.CreateFile(path.PROPERTIES);
                 FileManagement.Overwritetxt(path.PROPERTIES, Resources.properties_default);
+            }
+
+            if (File.Exists(path.ABSENT)) {
+                File.Delete(path.ABSENT);
             }
         }
         
@@ -147,7 +149,7 @@ namespace BusinessClubLottery2 {
         /// 
         /// </summary>
         private static string[] Lot (int value, bool useHistory, bool setValue) {
-
+            SetAbsent absent = new SetAbsent();
             string[] result = new string[1];
 
             if (!setValue) {
@@ -182,11 +184,13 @@ namespace BusinessClubLottery2 {
                     }
 
                     if (!(ReferHistory.IsOverlap(result, ListEvent.ToList2(FileManagement.Readtxt(path.CACHE))))) {
-
                         //for (int j = 0; j <= result.Length - 1; j++) {
                         //    MessageBox.Show(result[j].Replace("\r\n", "\n").Split(new[] { '\n', '\r' })[0] + "あ");
                         //}
-                        break;
+                        absent.names = result.ToArray();
+                        if (!absent.IsAbsent()) {
+                            break;
+                        }
                     }
                     //MessageBox.Show("草");
 

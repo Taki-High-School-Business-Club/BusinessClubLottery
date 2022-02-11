@@ -5,6 +5,8 @@ using System.Data;
 using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
+using System.Linq;
+using System.IO;
 using BusinessClubLottery2;
 using BusinessClubLottery2.Events;
 
@@ -163,6 +165,29 @@ namespace BusinessClubLottery2.Settings {
 
             string writevalue = ListEvent.ListToStr(_full);
             FileManagement.Overwritetxt(path.PROPERTIES, writevalue);
+        }
+
+        private void absentbtn_Click(object sender, EventArgs e) {
+            NameBox nb = new NameBox();
+            nb.ShowDialog(this);
+            nb.Dispose();
+
+            if (nb.selected != null) {
+                if (nb.selected.Length != 0) {
+                    string temp = "";
+                    foreach (string res in nb.selected) temp += $"{res} ";                    
+                    temp = temp.TrimEnd();
+                    if (!File.Exists(path.ABSENT)) {
+                        FileManagement.CreateFile(path.ABSENT);
+                    }
+                    FileManagement.Overwritetxt(path.ABSENT, temp);
+                    temp += "\nを欠席者に設定しました。";
+                    MessageBox.Show(temp, "すやすや");
+                } else {
+                    File.Delete(path.ABSENT);
+                    MessageBox.Show("欠席者を削除しました。", "どーん");
+                }
+            }
         }
     }
 }
